@@ -17,6 +17,7 @@ Park.prototype.removeDinosaurByName = function (dinosaur) {
   this.dinosaurCollection.splice(indexOfDinosaur, 1);
 };
 
+
 Park.prototype.findBySpecies = function (species) {
     returnedDinosaurs = []
     for (dinosaur of this.dinosaurCollection) {
@@ -26,6 +27,30 @@ Park.prototype.findBySpecies = function (species) {
   }
   return returnedDinosaurs
 };
+
+// Park.prototype.removeBySpecies = function (species) {
+//   this.findBySpecies(species)
+// };
+
+Park.prototype.visitorsPerDay = function () {
+  total = 0
+  for (dinosaur of this.dinosaurCollection) {
+    total += dinosaur.guestsAttractedPerDay
+  }
+  return total
+};
+
+Park.prototype.visitorsPerYear = function () {
+  total = this.visitorsPerDay() * 365
+  return total
+};
+
+Park.prototype.revenuePerYear = function () {
+  total = this.visitorsPerYear() * this.ticketPrice
+  return total
+};
+
+
 
 
 
