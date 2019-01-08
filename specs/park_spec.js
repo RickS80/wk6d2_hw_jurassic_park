@@ -10,6 +10,7 @@ describe('Park', function() {
     dinosaur1 = new Dinosaur('t-rex', 'carnivore', 10)
     dinosaur2 = new Dinosaur('brontosaurus', 'herbivore', 2)
     dinosaur3 = new Dinosaur('stegosaurus', 'carnivore', 5)
+    dinosaur4 = new Dinosaur('t-rex', 'carnivore', 10)
     park = new Park('Jurassic Park', 50, [dinosaur1, dinosaur2])
   });
 
@@ -30,27 +31,43 @@ describe('Park', function() {
 
 
   it('should be able to add a dinosaur to its collection', function(){
-    park.addDinosaur('stegosaurus')
-    const actual = park.dinosaurCollection.length
-    assert.strictEqual(actual, 3)
+    park.addDinosaur(dinosaur3);
+    const actual = park.dinosaurCollection.length;
+    assert.strictEqual(actual, 3);
   });
 
   it('should be able to remove a dinosaur from its collection', function(){
-    park.removeDinosaur()
-    const actual = park.dinosaurCollection.length
+    park.removeDinosaur();
+    const actual = park.dinosaurCollection.length;
     assert.strictEqual(actual,1)
   });
 
   it('should be able to remove a dinosaur from its collection by name', function(){
-    park.removeDinosaurByName(dinosaur1)
-    const actual = park.dinosaurCollection[0]
-    assert.strictEqual(actual, dinosaur2)
+    park.removeDinosaurByName(dinosaur1);
+    const actual = park.dinosaurCollection[0];
+    assert.strictEqual(actual, dinosaur2);
   });
 
-  it('should be able to find the dinosaur that attracts the most visitors');
+  it('should be able to find the dinosaur that attracts the most visitors', function(){
+    park.addDinosaur(dinosaur3);
+    })
 
-  it('should be able to find all dinosaurs of a particular species');
 
-  it('should be able to remove all dinosaurs of a particular species');
+  it('should be able to find all dinosaurs of a particular species', function(){
+    park.addDinosaur(dinosaur3);
+    park.addDinosaur(dinosaur4);
+    const actual = park.findBySpecies('t-rex')
+    assert.deepStrictEqual(actual, [dinosaur1, dinosaur4])
+  })
 
-});
+
+  it('should be able to remove all dinosaurs of a particular species', function(){
+    park.addDinosaur(dinosaur3);
+    park.addDinosaur(dinosaur4);
+
+
+  })
+
+
+
+})

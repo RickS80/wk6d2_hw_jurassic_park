@@ -17,4 +17,16 @@ Park.prototype.removeDinosaurByName = function (dinosaur) {
   this.dinosaurCollection.splice(indexOfDinosaur, 1);
 };
 
+Park.prototype.findBySpecies = function (species) {
+    returnedDinosaurs = []
+    for (dinosaur of this.dinosaurCollection) {
+      if (dinosaur.species === species) {
+      returnedDinosaurs.push(dinosaur)
+    }
+  }
+  return returnedDinosaurs
+};
+
+
+
 module.exports = Park;
